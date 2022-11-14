@@ -12,6 +12,7 @@ export const useAnimatedScale = (scGap : number = 0.01 , delay : number = 20) =>
                     setScale((prev : number) => {
                         if (prev > 1) {
                             setAnimated(false)
+                            clearInterval(interval)
                             return 0 
                         }
                         return prev += scGap 
@@ -67,7 +68,8 @@ export const useStyle = (w : number, h : number, scale : number) => {
         blockStyle() : CSSProperties {
             return {
                 position,
-                width: `${size}px`,
+                top: `${-size / 2}px`,
+                width: `${3 * size}px`,
                 height: `${size}px`,
                 background
             }
